@@ -1,0 +1,10 @@
+include ':imglibrary'
+include ':dblibrary'
+include ':logExtlibrary'
+include ':mvvmExtlibrary'
+include ':baseExtlibrary'
+include ':wanandroid'
+include ':networklibrary'
+include ':toolkitlibrary'
+include ':app'
+rootProject.name = "Hunter"
