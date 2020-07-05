@@ -16,11 +16,11 @@ import java.net.UnknownHostException
  */
 open class AppViewModel : ViewModel() {
 
-    private val TAG = AppViewModel::javaClass.name
+    private val TAG = this::class.java.simpleName
     val appContext: Context by lazy { SingletonFactory.get.ctx }
 
     init {
-        log.d(TAG, "an ViewModel $TAG is init ")
+        log.d(TAG, "an ViewModel $this is init ")
     }
 
     fun handleApiFailure(exception: Throwable) {

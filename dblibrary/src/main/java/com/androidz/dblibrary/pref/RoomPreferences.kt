@@ -6,9 +6,7 @@ import android.content.Context
 import android.os.Parcelable
 import androidx.room.*
 import com.androidz.dblibrary.build
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import java.io.Serializable
 
 /**
@@ -21,11 +19,13 @@ abstract class RoomPreferencesDb() : RoomDatabase() {
 
 }
 
-@Entity(tableName = "pref")
+@Entity(tableName = "pref", indices = [Index(value = ["key"], unique = true)])
 data class Preferences(
     @ColumnInfo(name = "key",
         typeAffinity = ColumnInfo.TEXT
-    ) val key: String,
+
+    )
+    val key: String,
     @ColumnInfo(name = "value") val value: String? = null
 
 ) {
@@ -36,10 +36,10 @@ data class Preferences(
 
 @Dao
 interface PreferencesDao {
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertAll( preferences: MutableList<Preferences>): List<Long>
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(preferences: MutableList<Preferences>): List<Long>
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(preferences: Preferences): Long
 
     @Delete()
@@ -61,7 +61,7 @@ object RoomPreferences : Editor {
 
     var name: String = "pref.db"
 
-    var contex: Context? = null
+    var context: Context? = null
         set(value) {
             field = value!!.applicationContext
         }
@@ -76,7 +76,7 @@ object RoomPreferences : Editor {
 
     fun getPreferencesDb(): RoomPreferencesDb {
         return INSTANCE ?: synchronized(this) {
-            val instance = build<RoomPreferencesDb>(context = contex!!,
+            val instance = build<RoomPreferencesDb>(context = context!!,
                 name = name, callback = callback
             ) {}
             INSTANCE = instance
@@ -85,7 +85,7 @@ object RoomPreferences : Editor {
     }
 
     @Transaction
-    override fun save(vararg pairs: Pair<String, Any?>) {
+    override fun save(vararg pairs: Pair<String, Any?>): List<Long> {
         val list = mutableListOf<Preferences>()
         for ((key, value) in pairs) {
             when (value) {
@@ -118,23 +118,19 @@ object RoomPreferences : Editor {
             // Reference arrays
 
         }
-        val launch = GlobalScope.launch(Dispatchers.IO) {
+        return runBlocking {
             getPreferencesDb().preferencesDao().insertAll(list)
         }
     }
 
-    override fun <T> get(key: String): T? {
-        var t: T? = null
-        val launch = GlobalScope.launch(Dispatchers.IO) {
-            t = getPreferencesDb().preferencesDao().find(key)?.value as? T
-        }
-        return t
+    override fun <T> get(key: String): T? = runBlocking {
+        getPreferencesDb().preferencesDao().find(key)?.value as? T
     }
 
 
 }
 
 interface Editor {
-    fun save(vararg pairs: Pair<String, Any?>)
+    fun save(vararg pairs: Pair<String, Any?>): List<Long>
     fun <T> get(key: String): T?
 }

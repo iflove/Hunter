@@ -11,6 +11,7 @@ import com.tencent.smtt.sdk.WebChromeClient
 import com.tencent.smtt.sdk.WebView
 import com.tencent.smtt.sdk.WebViewClient
 import kotlinx.android.synthetic.main.fragment_web.*
+import kotlinx.android.synthetic.main.layout_title.*
 
 /**
  *
@@ -34,8 +35,7 @@ class WebFragment : AppBaseFragment(R.layout.fragment_web) {
     }
 
     override fun onBack() {
-        super.onBack()
-        if (webView.canGoBack()) webView.goBack() else requireActivity().onBackPressed()
+        if (webView.canGoBack()) webView.goBack() else super.onBack()
     }
 
     override fun initData() {

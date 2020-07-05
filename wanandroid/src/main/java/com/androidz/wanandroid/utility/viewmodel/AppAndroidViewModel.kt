@@ -8,11 +8,11 @@ import com.androidz.logextlibrary.Logger
  *
  * Created by rentianlong on 2020/7/3
  */
-class AppAndroidViewModel(application: Application) : AndroidViewModel(application) {
+open class AppAndroidViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val TAG = AppAndroidViewModel::javaClass.name
+    private val TAG = this::class.java.simpleName
 
     init {
-        Logger.log.d(TAG, "an AndroidViewModel $TAG is init ")
+        Logger.log.d(TAG, "an AndroidViewModel $this is init ")
     }
 }

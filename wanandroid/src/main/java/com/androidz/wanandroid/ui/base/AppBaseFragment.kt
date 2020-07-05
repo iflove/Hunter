@@ -24,5 +24,6 @@ open class AppBaseFragment @JvmOverloads constructor(
     }
 
     open fun onBack() {
+        activity?.onBackPressed()
     }
 }
