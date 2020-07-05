@@ -66,7 +66,7 @@ class WebFragment : AppBaseFragment(R.layout.fragment_web) {
 
                 override fun onReceivedTitle(p0: WebView?, p1: String?) {
                     super.onReceivedTitle(p0, p1)
-                    p1?.let { toolbar.title = p1 }
+                    p1?.let { toolbar?.title = p1 }
                 }
 
             }

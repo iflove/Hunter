@@ -3,6 +3,7 @@ package com.androidz.wanandroid.arch.core
 import android.content.Context
 import com.androidz.logextlibrary.Logger.Companion.log
 import com.androidz.toolkitlibrary.DimenKt
+import com.androidz.toolkitlibrary.NetKt
 import com.androidz.toolkitlibrary.ToastKt
 import com.androidz.wanandroid.App
 import com.androidz.wanandroid.utility.net.AppRetrofitClient
@@ -16,6 +17,7 @@ object SingletonFactory {
         log.d("SingletonFactory", "init")
         DimenKt.resources = context.resources
         ToastKt.context = context
+        NetKt.context = context
     }
 
     val get = Provider()

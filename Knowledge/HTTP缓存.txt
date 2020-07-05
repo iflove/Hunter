@@ -1,0 +1,12 @@
+
+HTTP 缓存协议
+https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Caching_FAQ
+
+OkHttp  缓存机制
+为了节省流量和提高响应速度，OkHttp 有自己的一套缓存机制，CacheInterceptor 就是用来负责读取缓存以及更新缓存的。
+
+CacheControl、Cache、CacheInterceptor..
+
+
+
+

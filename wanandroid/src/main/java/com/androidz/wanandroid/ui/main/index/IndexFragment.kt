@@ -42,6 +42,7 @@ class IndexFragment : AppBaseFragment(R.layout.layout_refresh_list) {
         }
         swipeRefreshLayout.run {
             fun onRefresh() {
+                indexViewModel.getBannersData()
                 indexViewModel.getArticleList(isRefresh = true)
             }
             setOnRefreshListener { onRefresh() }

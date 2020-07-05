@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit
 abstract class BaseRetrofitClient() {
 
     companion object {
-        private const val TIME_OUT = 30L
+        private const val TIME_OUT = 10L
     }
 
     val okClient: OkHttpClient by lazy { createOkClient({}, {}) }

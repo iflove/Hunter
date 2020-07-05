@@ -2,13 +2,12 @@ package com.androidz.wanandroid.utility.viewmodel
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.androidz.logextlibrary.Logger.Companion.log
 import com.androidz.toolkitlibrary.toast
 import com.androidz.wanandroid.arch.core.Result
 import com.androidz.wanandroid.arch.core.SingletonFactory
 import com.google.gson.JsonParseException
-import kotlinx.coroutines.launch
+import retrofit2.HttpException
 import java.net.UnknownHostException
 
 /**
@@ -26,10 +25,13 @@ open class AppViewModel : ViewModel() {
 
     fun handleApiFailure(exception: Throwable) {
         main {
-            exception.cause?.message?.let { it1 -> log.d("onApiFailure", it1) }
+            exception.message?.let { it1 -> log.d("onApiFailure", it1) }
             appContext.toast("onApiFailure${when (exception) {
                 is JsonParseException -> "Json解析错误"
                 is UnknownHostException -> "无法访问主机"
+                is HttpException -> {
+                    "网络异常#${exception::class.java.simpleName}"
+                }
                 else -> "未知错误#${exception::class.java.simpleName}"
             }}"
             )
