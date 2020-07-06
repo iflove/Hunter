@@ -4,6 +4,7 @@ import com.androidz.logextlibrary.Logger
 import com.androidz.networklibrary.BaseRetrofitClient
 import com.androidz.toolkitlibrary.NetKt
 import com.androidz.wanandroid.arch.api.AndroidService
+import com.androidz.wanandroid.arch.api.GankService
 import com.androidz.wanandroid.arch.core.SingletonFactory
 import okhttp3.Cache
 import okhttp3.Interceptor
@@ -22,7 +23,7 @@ object AppRetrofitClient : BaseRetrofitClient(), HttpLoggingInterceptor.Logger {
         createClientServer<AndroidService>(ServerUris.BASE_WAN_URI)
     }
     val ganService by lazy {
-        createClientServer<AndroidService>(ServerUris.BASE_GAN_URI)
+        createClientServer<GankService>(ServerUris.BASE_GAN_URI)
     }
     val cacheDir by lazy {
         File(SingletonFactory.get.ctx.cacheDir.absolutePath, "OkHttp-Cache")

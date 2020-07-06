@@ -1,6 +1,8 @@
 package com.androidz.wanandroid.arch.repository
 
 import com.androidz.toolkitlibrary.KitException
+import com.androidz.wanandroid.arch.api.GankService
+import com.androidz.wanandroid.arch.api.data.GankResponse
 import com.androidz.wanandroid.arch.api.data.WanResponse
 import com.androidz.wanandroid.arch.core.Result
 import com.androidz.wanandroid.arch.core.SingletonFactory
@@ -48,5 +50,27 @@ class WanAppRepository : AppRepository() {
 }
 
 class GankAppRepository : AppRepository() {
+    val gankService = SingletonFactory.get.component1().ganService
 
+    inner class GankApiException(message: String) : KitException(message)
+
+    // diff 上面
+    suspend fun <T> map(api: GankService = gankService,
+                        call: suspend GankService.() -> GankResponse<T>
+    ): Result<T> {
+        val runCatching = kotlin.runCatching { call(api) }
+        return when {
+            runCatching.isSuccess -> {
+                val gankResponse = runCatching.getOrNull()!!
+                if (gankResponse.status != 100) {
+                    Result.Error(GankApiException(gankResponse.status.toString()))
+                } else {
+                    Result.Success(gankResponse.data)
+                }
+            }
+            else -> {
+                Result.Error(runCatching.exceptionOrNull()!!)
+            }
+        }
+    }
 }

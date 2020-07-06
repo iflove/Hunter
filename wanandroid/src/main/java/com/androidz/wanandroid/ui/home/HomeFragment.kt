@@ -4,11 +4,10 @@ import androidx.fragment.app.Fragment
 import com.androidz.toolkitlibrary.createNew
 import com.androidz.wanandroid.R
 import com.androidz.wanandroid.ui.base.AppBaseFragment
-import com.androidz.wanandroid.ui.main.nav.NavFragment
-import com.androidz.wanandroid.ui.main.square.SquareFragment
-import com.androidz.wanandroid.ui.main.system.SystemFragment
+import com.androidz.wanandroid.ui.blog.BlogFragment
 import com.androidz.wanandroid.ui.main.MainFragment
 import com.androidz.wanandroid.ui.project.ProjectFragment
+import com.androidz.wanandroid.ui.search.SearchFragment
 import com.androidz.wanandroid.utility.adapter.AppFragmentStateAdapter
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -18,10 +17,9 @@ class HomeFragment : AppBaseFragment(layoutId = R.layout.fragment_home) {
         mutableListOf<Fragment>()
             .apply {
                 add(createNew<MainFragment>())
+                add(createNew<BlogFragment>())
+                add(createNew<SearchFragment>())
                 add(createNew<ProjectFragment>())
-                add(createNew<SquareFragment>())
-                add(createNew<SystemFragment>())
-                add(createNew<NavFragment>())
             }
     }
 

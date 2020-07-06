@@ -8,4 +8,5 @@ package com.androidz.wanandroid.arch.core
 object ObjectFactory {
 
     fun WanAppRepository() = com.androidz.wanandroid.arch.repository.WanAppRepository()
+    fun GankAppRepository() = com.androidz.wanandroid.arch.repository.GankAppRepository()
 }

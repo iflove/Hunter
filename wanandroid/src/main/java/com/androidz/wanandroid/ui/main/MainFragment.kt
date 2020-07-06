@@ -7,9 +7,9 @@ import com.androidz.toolkitlibrary.ResUtil
 import com.androidz.toolkitlibrary.createNew
 import com.androidz.wanandroid.R
 import com.androidz.wanandroid.ui.base.AppBaseFragment
-import com.androidz.wanandroid.ui.blog.BlogFragment
 import com.androidz.wanandroid.ui.main.index.IndexFragment
 import com.androidz.wanandroid.ui.main.nav.NavFragment
+import com.androidz.wanandroid.ui.main.square.SquareFragment
 import com.androidz.wanandroid.ui.main.system.SystemFragment
 import com.androidz.wanandroid.ui.project.ProjectFragment
 import com.androidz.wanandroid.utility.adapter.AppFragmentStateAdapter
@@ -27,7 +27,7 @@ class MainFragment : AppBaseFragment(R.layout.fragment_main) {
         mutableListOf<Fragment>()
             .apply {
                 add(createNew<IndexFragment>())
-                add(createNew<BlogFragment>())
+                add(createNew<SquareFragment>())
                 add(createNew<ProjectFragment>())
                 add(createNew<SystemFragment>())
                 add(createNew<NavFragment>())

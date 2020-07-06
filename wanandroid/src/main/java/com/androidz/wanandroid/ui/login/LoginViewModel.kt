@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import com.androidz.dblibrary.pref.RoomPreferences
 import com.androidz.wanandroid.arch.api.data.User
 import com.androidz.wanandroid.arch.core.ObjectFactory
-import com.androidz.wanandroid.arch.repository.WanAppRepository
 import com.androidz.wanandroid.utility.IS_LOGIN
 import com.androidz.wanandroid.utility.USER_INFO
 import com.androidz.wanandroid.utility.viewmodel.AppViewModel
@@ -16,7 +15,7 @@ import com.androidz.wanandroid.utility.viewmodel.io
  * Created by rentianlong on 2020/7/5
  */
 class LoginViewModel : AppViewModel() {
-    private val wanAppRepository: WanAppRepository = ObjectFactory.WanAppRepository()
+    private val wanAppRepository = ObjectFactory.WanAppRepository()
 
     data class LoginUiState(val loading: Boolean = false, val user: User? = null)
 
