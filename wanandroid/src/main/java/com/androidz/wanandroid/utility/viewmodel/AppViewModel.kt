@@ -6,6 +6,7 @@ import com.androidz.logextlibrary.Logger.Companion.log
 import com.androidz.toolkitlibrary.toast
 import com.androidz.wanandroid.arch.core.Result
 import com.androidz.wanandroid.arch.core.SingletonFactory
+import com.androidz.wanandroid.arch.repository.WanAppRepository
 import com.google.gson.JsonParseException
 import retrofit2.HttpException
 import java.net.UnknownHostException
@@ -29,6 +30,7 @@ open class AppViewModel : ViewModel() {
             appContext.toast("onApiFailure${when (exception) {
                 is JsonParseException -> "Json解析错误"
                 is UnknownHostException -> "无法访问主机"
+                is WanAppRepository.WanApiException -> exception.message
                 is HttpException -> {
                     "网络异常#${exception::class.java.simpleName}"
                 }

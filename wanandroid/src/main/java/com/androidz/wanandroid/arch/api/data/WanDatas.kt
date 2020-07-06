@@ -64,7 +64,7 @@ data class User(val admin: Boolean,
                 val token: String,
                 val type: Int,
                 val username: String
-) {
+) : Serializable {
 
     override fun equals(other: Any?): Boolean {
         return if (other is User) {

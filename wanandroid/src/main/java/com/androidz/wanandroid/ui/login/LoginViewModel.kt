@@ -3,7 +3,6 @@ package com.androidz.wanandroid.ui.login
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.androidz.dblibrary.pref.RoomPreferences
-import com.androidz.networklibrary.toGson
 import com.androidz.wanandroid.arch.api.data.User
 import com.androidz.wanandroid.arch.core.ObjectFactory
 import com.androidz.wanandroid.arch.repository.WanAppRepository
@@ -31,7 +30,8 @@ class LoginViewModel : AppViewModel() {
                 map {
                     androidService.login(name, pwd)
                 }.onSuccess {
-                    RoomPreferences.save(USER_INFO to it.toGson(), IS_LOGIN to true)
+                    //RoomPreferences.save(USER_INFO to it.toGson(), IS_LOGIN to true)
+                    RoomPreferences.save(USER_INFO to it, IS_LOGIN to true)
                     _uiState.postValue(LoginUiState(false, it))
                 }.onFailure {
                     handleApiFailure(it)
