@@ -42,8 +42,7 @@ class App : Application() {
         SingletonFactory.inject(this)
         WeLog.initLog(this)
         startService<CoreService>()
-        ResUtil.inject(this, R::class.java.`package`.name)
-
+        ResUtil.inject(this, R::class.java.`package`?.name)
         QbSdk.initX5Environment(this, null)
     }
 }

@@ -38,3 +38,8 @@ val swipeRefreshLayout = "1.1.0"
 
 //img
 val glide_version = "4.11.0"
+
+
+val arouter_register_version = "1.0.2"
+val arouter_api_version = "1.5.0"
+val arouter_compliler_version = "1.2.2"
