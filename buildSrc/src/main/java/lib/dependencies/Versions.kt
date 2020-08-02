@@ -7,9 +7,9 @@ package lib.dependencies
  * Created by rentianlong on 2020/6/27
  */
 //andoird compile sdk
-val compileSdkVersion = 30
+val compileSdkVersion = 29
 val minSdkVersion = 21
-val targetSdkVersion = 30
+val targetSdkVersion = 29
 
 //test
 val junit_version = "4.13"
