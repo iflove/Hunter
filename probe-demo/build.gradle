@@ -1,10 +1,15 @@
-import lib.dependencies.Versions
+//import lib.dependencies.Versions
+import com.hi.plugin.Versions
 
+plugins{
+    id "com.hi.plugin"
+}
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
+
     compileSdkVersion Versions.compileSdkVersion
 
     defaultConfig {

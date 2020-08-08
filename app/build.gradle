@@ -1,4 +1,4 @@
-import lib.dependencies.Versions
+//import lib.dependencies.Versions
 
 
 apply plugin: 'com.android.application'

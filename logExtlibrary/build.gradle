@@ -1,5 +1,9 @@
-import lib.dependencies.Versions
+//import lib.dependencies.Versions
+import com.hi.plugin.Versions
 
+plugins{
+    id "com.hi.plugin"
+}
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
