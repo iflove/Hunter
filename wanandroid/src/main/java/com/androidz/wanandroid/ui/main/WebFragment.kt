@@ -3,7 +3,7 @@ package com.androidz.wanandroid.ui.main
 import android.graphics.Bitmap
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
-import com.androidz.logextlibrary.log
+import com.androidz.logextlibrary.Logg.Companion.log
 import com.androidz.toolkitlibrary.ResUtil
 import com.androidz.wanandroid.R
 import com.androidz.wanandroid.ui.base.AppBaseFragment

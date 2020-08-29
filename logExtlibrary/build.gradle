@@ -1,8 +1,9 @@
-import lib.dependencies.Versions
-
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+import lib.dependencies.Versions
+
+group = 'com.github.iflove'
 
 android {
     compileSdkVersion 30
@@ -34,11 +35,11 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin_version}"
-    implementation "androidx.core:core-ktx:${Versions.core_ktx_version}"
+//    implementation fileTree(dir: "libs", include: ["*.jar"])
+//    implementation "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin_version}"
+//    implementation "androidx.core:core-ktx:${Versions.core_ktx_version}"
     testImplementation "junit:junit:${Versions.junit_version}"
     androidTestImplementation "androidx.test.ext:junit:${Versions.and_junit_version}"
-    androidTestImplementation "androidx.test.espresso:espresso-core:${Versions.espresso_version}"
-    implementation "androidx.appcompat:appcompat:${Versions.appcompat_version}"
+//    androidTestImplementation "androidx.test.espresso:espresso-core:${Versions.espresso_version}"
+    compileOnly "androidx.appcompat:appcompat:${Versions.appcompat_version}"
 }

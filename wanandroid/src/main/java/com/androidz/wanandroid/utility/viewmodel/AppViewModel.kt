@@ -2,7 +2,7 @@ package com.androidz.wanandroid.utility.viewmodel
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
-import com.androidz.logextlibrary.Logger.Companion.log
+import com.androidz.logextlibrary.Logg.Companion.log
 import com.androidz.toolkitlibrary.toast
 import com.androidz.wanandroid.arch.core.Result
 import com.androidz.wanandroid.arch.core.SingletonFactory

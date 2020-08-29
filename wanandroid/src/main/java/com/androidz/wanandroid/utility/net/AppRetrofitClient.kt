@@ -1,6 +1,6 @@
 package com.androidz.wanandroid.utility.net
 
-import com.androidz.logextlibrary.Logger
+import com.androidz.logextlibrary.Logg
 import com.androidz.networklibrary.BaseRetrofitClient
 import com.androidz.toolkitlibrary.NetKt
 import com.androidz.wanandroid.arch.api.AndroidService
@@ -62,7 +62,7 @@ object AppRetrofitClient : BaseRetrofitClient(), HttpLoggingInterceptor.Logger {
     }
 
     override fun log(message: String) {
-        Logger.log.d(TAG, message)
+        Logg.log.d(TAG, message)
     }
 
 }

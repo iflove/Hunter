@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 
-import com.androidz.logextlibrary.Logger;
+import com.androidz.logextlibrary.Logg;
 import com.androidz.wanandroid.BuildConfig;
 
 import org.jetbrains.annotations.NotNull;
@@ -31,7 +31,7 @@ public class MessageChannel extends Handler {
     public void handleMessage(@NotNull final Message msg) {
         super.handleMessage(msg);
         if (BuildConfig.DEBUG) {
-            Logger.Companion.getLog().d(TAG, "handleMessage:" + msg.toString());
+            Logg.Companion.getLog().d(TAG, "handleMessage:" + msg.toString());
         }
         Iterator<Callback> it = mMessageObserver.keySet().iterator();
         while (it.hasNext()) {

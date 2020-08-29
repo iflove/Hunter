@@ -4,7 +4,7 @@ import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.lifecycle.Lifecycle
 import com.androidz.baseextlibrary.BaseFragment
-import com.androidz.logextlibrary.log
+import com.androidz.logextlibrary.Logg.Companion.log
 import com.androidz.toolkitlibrary.ResUtil
 import com.androidz.wanandroid.R
 

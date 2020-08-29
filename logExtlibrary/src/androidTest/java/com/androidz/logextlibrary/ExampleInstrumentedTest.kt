@@ -2,7 +2,7 @@ package com.androidz.logextlibrary
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.androidz.logextlibrary.Logger.Companion.log
+import com.androidz.logextlibrary.Logg.Companion.log
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith

@@ -2,10 +2,10 @@ package com.androidz.logextlibrary
 
 import android.app.Activity
 import android.app.Application
+import android.app.Fragment
 import android.app.Service
 import android.content.BroadcastReceiver
 import android.util.Log
-import androidx.fragment.app.Fragment
 
 /**
  *
@@ -27,8 +27,15 @@ interface Logger {
 
     fun e(tag: String, msg: String)
     fun e(tag: String, msg: String, tr: Throwable)
+}
+
+/**
+ * Log 工具
+ */
+class Logg {
 
     companion object {
+        const val NO_DEUBG = 0
 
         private val DEFAULT = object : Logger {
 
@@ -73,32 +80,114 @@ interface Logger {
             }
         }
 
+        @JvmStatic
         var log: Logger = DEFAULT
             get() = field
             set(value) {
                 field = value
             }
 
+        @JvmStatic
+        fun v(tag: String, msg: String) {
+            log.v(tag, msg)
+        }
 
+        @JvmStatic
+        fun v(tag: String, msg: String, tr: Throwable) {
+            log.v(tag, msg, tr)
+        }
+
+        @JvmStatic
+        fun d(tag: String, msg: String) {
+            log.d(tag, msg)
+        }
+
+        @JvmStatic
+        fun d(tag: String, msg: String, tr: Throwable) {
+            log.d(tag, msg, tr)
+        }
+
+        @JvmStatic
+        fun i(tag: String, msg: String) {
+            log.i(tag, msg)
+        }
+
+        @JvmStatic
+        fun i(tag: String, msg: String, tr: Throwable) {
+            log.i(tag, msg, tr)
+        }
+
+        @JvmStatic
+        fun w(tag: String, msg: String) {
+            log.w(tag, msg)
+        }
+
+        @JvmStatic
+        fun w(tag: String, msg: String, tr: Throwable) {
+            log.w(tag, msg, tr)
+        }
+
+        @JvmStatic
+        fun e(tag: String, msg: String) {
+            log.e(tag, msg)
+        }
+
+        @JvmStatic
+        fun e(tag: String, msg: String, tr: Throwable) {
+            log.e(tag, msg, tr)
+        }
+
+
+        @JvmStatic
+        fun isLoggable(tag: String, level: Int): Boolean {
+            return System.getProperty("log.tag.$tag", NO_DEUBG.toString()) == when (level) {
+                Log.VERBOSE -> "V"
+                Log.DEBUG -> "D"
+                Log.ERROR -> "E"
+                Log.INFO -> "I"
+                Log.WARN -> "W"
+                Log.ASSERT -> "A"
+                else -> NO_DEUBG
+            }
+        }
+
+        @JvmStatic
+        fun setLoggable(tag: String, level: Int) {
+            System.setProperty(
+                "log.tag.$tag", when (level) {
+                    Log.VERBOSE -> "V"
+                    Log.DEBUG -> "D"
+                    Log.ERROR -> "E"
+                    Log.INFO -> "I"
+                    Log.WARN -> "W"
+                    Log.ASSERT -> "A"
+                    else -> NO_DEUBG.toString()
+                }
+            )
+        }
     }
 }
 
 var Application.log: Logger
-    get() = Logger.log
+    get() = Logg.log
     set(value) {}
 
 var Activity.log: Logger
-    get() = Logger.log
+    get() = Logg.log
     set(value) {}
 
 var Fragment.log: Logger
-    get() = Logger.log
+    get() = Logg.log
+    set(value) {}
+
+var androidx.fragment.app.Fragment.log: Logger
+    get() = Logg.log
     set(value) {}
 
 var Service.log: Logger
-    get() = Logger.log
+    get() = Logg.log
     set(value) {}
 
 var BroadcastReceiver.log: Logger
-    get() = Logger.log
+    get() = Logg.log
     set(value) {}

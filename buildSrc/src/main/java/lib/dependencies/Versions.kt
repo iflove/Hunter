@@ -15,7 +15,7 @@ val targetSdkVersion = 29
 val junit_version = "4.13"
 
 //android
-val and_junit_version = "1.1.1"
+val and_junit_version = "1.1.2"
 val espresso_version = "3.2.0"
 
 //kt
@@ -24,7 +24,7 @@ val coroutines_version = "1.3.7"
 
 //androidx
 val core_ktx_version = "1.3.0"
-val appcompat_version = "1.1.0"
+val appcompat_version = "1.2.0"
 val constraintlayout_version = "1.1.3"
 val cardView = "1.0.0"
 val material = "1.3.0-alpha01"

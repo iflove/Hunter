@@ -2,7 +2,7 @@ package com.androidz.wanandroid.arch.core
 
 import android.content.Context
 import com.androidz.dblibrary.pref.RoomPreferences
-import com.androidz.logextlibrary.Logger.Companion.log
+import com.androidz.logextlibrary.Logg.Companion.log
 import com.androidz.toolkitlibrary.DimenKt
 import com.androidz.toolkitlibrary.NetKt
 import com.androidz.toolkitlibrary.ToastKt

@@ -3,7 +3,7 @@ package androidx.fragment.app
 import android.os.Bundle
 import androidx.annotation.LayoutRes
 import com.androidz.baseextlibrary.BuildConfig
-import com.androidz.logextlibrary.log
+import com.androidz.logextlibrary.Logg.Companion.log
 
 
 /**

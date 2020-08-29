@@ -2,7 +2,7 @@ package com.androidz.wanandroid.ui.blog
 
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.androidz.logextlibrary.log
+import com.androidz.logextlibrary.Logg.Companion.log
 import com.androidz.wanandroid.R
 import com.androidz.wanandroid.ui.base.AppBaseFragment
 import com.androidz.wanandroid.ui.gank.GankViewModel

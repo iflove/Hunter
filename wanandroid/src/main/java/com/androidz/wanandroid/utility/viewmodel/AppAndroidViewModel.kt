@@ -2,7 +2,7 @@ package com.androidz.wanandroid.utility.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import com.androidz.logextlibrary.Logger
+import com.androidz.logextlibrary.Logg
 
 /**
  *
@@ -13,6 +13,6 @@ open class AppAndroidViewModel(application: Application) : AndroidViewModel(appl
     private val TAG = this::class.java.simpleName
 
     init {
-        Logger.log.d(TAG, "an AndroidViewModel $this is init ")
+        Logg.log.d(TAG, "an AndroidViewModel $this is init ")
     }
 }

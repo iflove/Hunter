@@ -2,6 +2,7 @@ package com.androidz.wanandroid.utility
 
 import android.content.Context
 import android.os.Environment
+import com.androidz.logextlibrary.Logg
 import com.androidz.logextlibrary.Logger
 import com.androidz.wanandroid.BuildConfig
 import com.tencent.mars.xlog.Log
@@ -47,7 +48,7 @@ object WeLog {
         }
 
         Log.setLogImp(Xlog())
-        Logger.log = object : Logger {
+        Logg.log = object : Logger {
             override fun v(tag: String, msg: String) {
                 TODO("Not yet implemented")
             }
