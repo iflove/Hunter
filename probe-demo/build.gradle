@@ -48,4 +48,5 @@ dependencies {
     implementation project(path: ':baseExtlibrary')
     implementation project(path: ':logExtlibrary')
     implementation project(path: ':toolkitlibrary')
+    implementation project(path: ':logExtlibrary')
 }

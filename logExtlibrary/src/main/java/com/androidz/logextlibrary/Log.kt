@@ -138,6 +138,9 @@ class Logg {
         }
 
 
+        /**
+         * Java层的isLoggable,并不是安卓层
+         */
         @JvmStatic
         fun isLoggable(tag: String, level: Int): Boolean {
             return System.getProperty("log.tag.$tag", NO_DEUBG.toString()) == when (level) {
@@ -164,6 +167,29 @@ class Logg {
                     else -> NO_DEUBG.toString()
                 }
             )
+        }
+
+        /**
+         * 获取当前线程堆栈打印msg
+         */
+        @JvmStatic
+        @JvmOverloads
+        fun getStackTraceMsg(msg: Any?, index: Int = 6): String {
+            return StringBuilder().let {
+                getStackTraceElement(index)?.run {
+                    it.append("[ (").append(fileName).append(":").append(lineNumber).append(")#")
+                        .append(methodName).append(" ] ")
+                }
+                it.append(msg ?: "null")
+            }.toString()
+        }
+
+        /**
+         * 当前线程的堆栈情况
+         */
+        private fun getStackTraceElement(index: Int): StackTraceElement? {
+            val stackTrace = Thread.currentThread().stackTrace
+            return if (index >= stackTrace.size) null else stackTrace[index]
         }
     }
 }

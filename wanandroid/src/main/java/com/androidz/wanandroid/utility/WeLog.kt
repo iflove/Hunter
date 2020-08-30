@@ -7,6 +7,7 @@ import com.androidz.logextlibrary.Logger
 import com.androidz.wanandroid.BuildConfig
 import com.tencent.mars.xlog.Log
 import com.tencent.mars.xlog.Xlog
+import com.tencent.mars.xlog.Xlog.XLogConfig
 
 /**
  *
@@ -21,44 +22,44 @@ object WeLog {
     fun initLog(context: Context) {
         val sd = Environment.getExternalStorageDirectory().absolutePath
         val logPath = sd + "marsxlog"
+        //这是必要的，否则可能会导致SIGBUS崩溃
         val cachePath = context.filesDir.absolutePath + "/xlog"
+        //init xlog
+        val logConfig = XLogConfig()
+        logConfig.mode = Xlog.AppednerModeAsync
+        logConfig.logdir = logPath
+        logConfig.nameprefix = "m"
+        logConfig.pubkey = ""
+        //压缩模式
+        logConfig.compressmode = Xlog.ZLIB_MODE
+        logConfig.compresslevel = 0
+        logConfig.cachedir = cachePath
+        logConfig.cachedays = 0
         if (BuildConfig.DEBUG) {
-            Xlog.appenderOpen(
-                Xlog.LEVEL_DEBUG,
-                Xlog.AppednerModeAsync,
-                cachePath,
-                logPath,
-                "MarsSample",
-                0,
-                ""
-            )
+            logConfig.level = Xlog.LEVEL_ALL
             Xlog.setConsoleLogOpen(true)
-
         } else {
-            Xlog.appenderOpen(
-                Xlog.LEVEL_INFO,
-                Xlog.AppednerModeAsync,
-                cachePath,
-                logPath,
-                "MarsSample",
-                0,
-                ""
-            )
+            logConfig.level = Xlog.LEVEL_INFO
             Xlog.setConsoleLogOpen(false)
         }
+        Xlog.appenderOpen(logConfig)
 
         Log.setLogImp(Xlog())
         Logg.log = object : Logger {
             override fun v(tag: String, msg: String) {
-                TODO("Not yet implemented")
+                Log.v(tag, msg)
             }
 
             override fun v(tag: String, msg: String, tr: Throwable) {
-                TODO("Not yet implemented")
+                Log.v(tag, msg, tr)
             }
 
             override fun d(tag: String, msg: String) {
-                Log.d(tag, msg)
+//                Log.d(tag, Logg.getStackTraceMsg(msg))
+//
+                Log.d(tag, Logg.getStackTraceMsg(msg, 7))
+                //java
+                //Log.d(tag, Logg.getStackTraceMsg(msg,5))
             }
 
             override fun d(tag: String, msg: String, tr: Throwable) {
@@ -90,7 +91,7 @@ object WeLog {
             }
 
         }
-
+        LogJ.log("test Java")
     }
 
     fun close() {
