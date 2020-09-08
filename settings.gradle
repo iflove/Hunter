@@ -1,3 +1,7 @@
+println 'settings.gradle 这在初始化阶段执行。'
+
+
+include ':buildgradle'
 include ':probe-demo'
 include ':imglibrary'
 include ':dblibrary'
