@@ -8,7 +8,7 @@ android {
     compileSdkVersion Versions.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.androidz.probe_demo"
+        applicationId "com.androidz.nfcdemo"
         minSdkVersion Versions.minSdkVersion
         targetSdkVersion Versions.targetSdkVersion
         versionCode 1
@@ -33,6 +33,8 @@ android {
 }
 
 dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
     testImplementation "junit:junit:${Versions.junit_version}"
     androidTestImplementation "androidx.test.ext:junit:${Versions.and_junit_version}"
     androidTestImplementation "androidx.test.espresso:espresso-core:${Versions.espresso_version}"
@@ -48,4 +50,7 @@ dependencies {
     implementation project(path: ':baseExtlibrary')
     implementation project(path: ':logExtlibrary')
     implementation project(path: ':toolkitlibrary')
+
+    implementation 'com.github.lilei:coroutine-permissions:1.0.0'
+
 }
