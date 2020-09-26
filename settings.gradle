@@ -1,3 +1,4 @@
+include ':bugly'
 println 'settings.gradle 这在初始化阶段执行。'
 
 
