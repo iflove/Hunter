@@ -72,5 +72,5 @@ dependencies {
     implementation project(path: ':logExtlibrary')
     implementation project(path: ':dblibrary')
     implementation project(path: ':imglibrary')
-
+    implementation project(path: ':appContextCompat')
 }
