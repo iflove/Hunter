@@ -2,6 +2,7 @@ package com.androidz.wanandroid
 
 import android.app.Application
 import android.content.Context
+import com.androidz.appcontextcompat.GlobalContext
 import com.androidz.logextlibrary.log
 import com.androidz.toolkitlibrary.ResUtil
 import com.androidz.toolkitlibrary.startService
@@ -28,9 +29,10 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        System.getProperties().put(GlobalContext.TAG, this)
         context = this
         log.i(TAG, "onCreate() const: ${measureTimeMillis { handleCreate() }}ms")
-        log.i(TAG, "enter app")
+        log.i(TAG, "enter app ${GlobalContext.context}")
     }
 
     override fun onLowMemory() {
