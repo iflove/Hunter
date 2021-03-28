@@ -1,6 +1,8 @@
+include ':mpaas-demo'
+include ':dex-demo'
 include ':appContextCompat'
 include ':nfcdemo'
-include ':bugly'
+//include ':bugly'
 println 'settings.gradle 这在初始化阶段执行。'
 
 

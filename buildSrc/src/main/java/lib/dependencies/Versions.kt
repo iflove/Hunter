@@ -19,7 +19,7 @@ val and_junit_version = "1.1.2"
 val espresso_version = "3.2.0"
 
 //kt
-val kotlin_version = "1.4.0"
+val kotlin_version = "1.4.31"
 val coroutines_version = "1.3.7"
 
 //androidx

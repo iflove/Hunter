@@ -62,5 +62,7 @@ dependencies {
     implementation project(path: ':logExtlibrary')
     implementation project(path: ':dblibrary')
 
-
+    implementation 'org.ow2.asm:asm:9.1'
+    implementation 'org.ow2.asm:asm-commons:9.1'
+    implementation 'org.ow2.asm:asm-util:9.1'
 }
