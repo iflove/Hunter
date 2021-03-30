@@ -11,6 +11,6 @@ public class LogT {
     public static void fix() {
         String nullObj = "null";
         nullObj.split("");
-        Log.d("xxa", "ok");
+        Log.d("xxa", "ok" + BuildConfig.VERSION_NAME);
     }
 }
