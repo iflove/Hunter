@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 import lib.dependencies.Versions
 
-group = 'com.github.iflove'
+//group = 'com.github.iflove'
 
 android {
     compileSdkVersion 30
@@ -13,7 +13,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
-        versionName "1.0"
+        versionName "1.3.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -30,6 +30,7 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
+        freeCompilerArgs = ['-Xjvm-default=compatibility']
         jvmTarget = JavaVersion.VERSION_1_8
     }
 }
@@ -42,4 +43,24 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:${Versions.and_junit_version}"
 //    androidTestImplementation "androidx.test.espresso:espresso-core:${Versions.espresso_version}"
     compileOnly "androidx.appcompat:appcompat:${Versions.appcompat_version}"
+}
+def groupIdStr = 'com.github.iflove.Hunter'
+def artifactIdStr = 'logExtlibrary'
+apply plugin: 'maven-publish'
+task generateSourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier 'sources'
+}
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = "$groupIdStr"
+                artifactId = "$artifactIdStr"
+                version = project.android.defaultConfig.versionName
+                artifact generateSourcesJar
+            }
+        }
+    }
 }

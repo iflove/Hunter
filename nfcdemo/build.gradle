@@ -28,6 +28,7 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
+        freeCompilerArgs = ['-Xjvm-default=compatibility']
         jvmTarget = JavaVersion.VERSION_1_8
     }
 }
