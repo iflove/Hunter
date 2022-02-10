@@ -44,8 +44,8 @@ dependencies {
 //    androidTestImplementation "androidx.test.espresso:espresso-core:${Versions.espresso_version}"
     compileOnly "androidx.appcompat:appcompat:${Versions.appcompat_version}"
 }
-def groupIdStr = 'com.github.iflove'
-def artifactIdStr = 'Hunter:logExtlibrary'
+def groupIdStr = 'com.github.iflove.Hunter'
+def artifactIdStr = 'logExtlibrary'
 apply plugin: 'maven-publish'
 task generateSourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
