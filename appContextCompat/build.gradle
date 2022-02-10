@@ -34,3 +34,23 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
 }
+def groupIdStr = 'com.github.iflove.Hunter'
+def artifactIdStr = 'appContextCompat'
+apply plugin: 'maven-publish'
+task generateSourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier 'sources'
+}
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = "$groupIdStr"
+                artifactId = "$artifactIdStr"
+                version = project.android.defaultConfig.versionName
+                artifact generateSourcesJar
+            }
+        }
+    }
+}
