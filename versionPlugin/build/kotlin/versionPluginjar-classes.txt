@@ -1,0 +1,1 @@
+/Users/system/MySourceFiles/AndroidStudioProjects/github/personal/Android-Hunter/versionPlugin/build/classes/kotlin/main/com/hi/plugin/Deps.class:/Users/system/MySourceFiles/AndroidStudioProjects/github/personal/Android-Hunter/versionPlugin/build/classes/kotlin/main/com/hi/plugin/Versions.class

@@ -1,0 +1,10 @@
+Manifest-Version: 1.0.3.18
+android-phone-mobilesdk-quinox-PatchID: 1617034732481
+android-phone-mobilesdk-quinox-HostDex: true
+android-phone-mobilesdk-quinox-PatchType: dexpatch
+Patch-Name: android-phone-mobilesdk-quinox
+Created-Time: 29 Mar 2021 16:18:52 GMT
+From-File: mpaas-demo-debug.apk
+To-File: mpaas-demo-debug-1.1.apk
+Created-By: 1.0.3.18 (ApkPatch)
+

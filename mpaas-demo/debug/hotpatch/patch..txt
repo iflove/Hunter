@@ -1,0 +1,4 @@
+Lcom.androidz.mPaas_demo.FirstFragment
+Lcom.androidz.mPaas_demo.LogT
+HostDex: true
+PatchType: dexpatch

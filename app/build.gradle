@@ -1,0 +1,68 @@
+import lib.dependencies.Versions
+
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+
+android {
+    compileSdkVersion Versions.compileSdkVersion
+
+    defaultConfig {
+        applicationId "com.androidz.demo"
+        minSdkVersion Versions.minSdkVersion
+        targetSdkVersion Versions.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+    buildFeatures {
+        viewBinding = true
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    testImplementation "junit:junit:${Versions.junit_version}"
+    androidTestImplementation "androidx.test.ext:junit:${Versions.and_junit_version}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${Versions.espresso_version}"
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin_version}"
+    implementation "androidx.core:core-ktx:${Versions.core_ktx_version}"
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines_version}")
+
+
+    implementation "androidx.appcompat:appcompat:${Versions.appcompat_version}"
+    implementation "androidx.constraintlayout:constraintlayout:${Versions.constraintlayout_version}"
+
+
+
+    implementation project(path: ':networklibrary')
+    implementation project(path: ':toolkitlibrary')
+    implementation project(path: ':baseExtlibrary')
+    implementation project(path: ':mvvmExtlibrary')
+    implementation project(path: ':logExtlibrary')
+    implementation project(path: ':dblibrary')
+
+    implementation 'org.ow2.asm:asm:9.1'
+    implementation 'org.ow2.asm:asm-commons:9.1'
+    implementation 'org.ow2.asm:asm-util:9.1'
+}

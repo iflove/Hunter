@@ -1,0 +1,18 @@
+.class public Lcom/alipay/mobile/nebulax/engine/api/model/LoadParams;
+.super Ljava/lang/Object;
+.source "LoadParams.java"
+
+
+# instance fields
+.field public url:Ljava/lang/String;
+
+
+# direct methods
+.method public constructor <init>()V
+    .locals 0
+
+    .line 7
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
