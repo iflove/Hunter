@@ -1,4 +1,6 @@
+# 迁移：https://github.com/iflove/Android-Projects
 # Hunter
+
 Android 框构 Kotlin实践
 
 轻量日志扩展，主应用模块实现
